@@ -2,3 +2,9 @@
 .netlify
 .DS_Store
 .agent/
+
+# Node / test tooling (not needed in repo)
+node_modules/
+package-lock.json
+test-runner.js
+typescript
