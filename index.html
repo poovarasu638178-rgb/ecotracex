@@ -545,6 +545,83 @@
     .tip-body p { font-size: 0.85rem; color: var(--text-500); line-height: 1.5; }
     .tip-saving { font-size: 0.78rem; font-weight: 700; color: var(--green-700); margin-top: 0.5rem; }
 
+    /* ── Quick Action button on each tip card ── */
+    .tip-action-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 0.75rem; padding: 0.4rem 0.9rem;
+      background: var(--green-600); color: #fff;
+      border: none; border-radius: 999px; cursor: pointer;
+      font-size: 0.78rem; font-weight: 700; font-family: var(--font-ui);
+      transition: var(--transition); white-space: nowrap;
+    }
+    .tip-action-btn:hover { background: var(--green-700); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(22,101,52,0.25); }
+    .tip-action-btn.adopted { background: #e5e7e0; color: var(--text-500); cursor: default; transform: none; box-shadow: none; }
+
+    /* ── Understand banner on hero ── */
+    .understand-banner {
+      margin-top: 2rem; padding: 1rem 1.25rem;
+      background: var(--green-50); border: 1px solid var(--green-200);
+      border-radius: var(--radius-md); display: flex; flex-wrap: wrap; gap: 0.6rem;
+      align-items: center;
+    }
+    .understand-banner-label {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--green-800); margin-right: 0.25rem;
+    }
+    .understand-chip {
+      padding: 0.3rem 0.75rem; border-radius: 999px;
+      background: #fff; border: 1px solid var(--green-300);
+      font-size: 0.78rem; color: var(--green-800); font-weight: 500;
+      display: flex; align-items: center; gap: 0.35rem;
+    }
+
+    /* ── Personalized context block on Insights ── */
+    .personalized-context {
+      padding: 0.85rem 1.1rem; border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 1.5px solid var(--green-300); margin-bottom: 1.25rem;
+      display: none;
+    }
+    .personalized-context.visible { display: block; }
+    .personalized-context-label {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--green-700); margin-bottom: 0.4rem;
+    }
+    .personalized-context p { font-size: 0.82rem; color: var(--text-700); line-height: 1.55; }
+    .personalized-context strong { color: var(--green-800); }
+
+    /* ── History log table (Track section) ── */
+    .history-log-table {
+      width: 100%; border-collapse: collapse; font-size: 0.83rem;
+    }
+    .history-log-table th {
+      text-align: left; padding: 0.5rem 0.75rem;
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-400);
+      border-bottom: 1.5px solid var(--border);
+    }
+    .history-log-table td {
+      padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border);
+      color: var(--text-700);
+    }
+    .history-log-table tr:last-child td { border-bottom: none; }
+    .history-log-table tr:hover td { background: var(--green-50); }
+    .log-delta-down { color: var(--green-600); font-weight: 700; }
+    .log-delta-up   { color: #ef4444; font-weight: 700; }
+    .history-log-empty {
+      text-align: center; padding: 1.5rem; color: var(--text-400);
+      font-size: 0.85rem;
+    }
+
+    /* ── Track section keyword pill ── */
+    .section-keyword-pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.25rem 0.7rem; border-radius: 999px;
+      background: var(--green-100); border: 1px solid var(--green-300);
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--green-800); margin-bottom: 0.5rem;
+    }
+
     /* AI Chat Box */
     .ai-input-wrap {
       display: flex; flex-direction: column; gap: 0.65rem;
@@ -886,28 +963,38 @@
       <span class="ticker-text" id="dyk-text">The average Indian emits 1.9 tons of CO₂ per year — less than half the world average of 4.7 tons.</span>
     </div>
 
+    <!-- ── UNDERSTAND: Always-visible educational fact chips ── -->
+    <div class="understand-banner" role="region" aria-label="Carbon education facts">
+      <span class="understand-banner-label">💡 Understand</span>
+      <span class="understand-chip">🚗 Transport = 21 g CO₂/km (petrol)</span>
+      <span class="understand-chip">🥩 Meat-heavy diet = 3.3 t/yr</span>
+      <span class="understand-chip">⚡ Grid electricity = 820 g CO₂/kWh</span>
+      <span class="understand-chip">✈️ One long-haul flight ≈ 0.975 t CO₂</span>
+      <span class="understand-chip">🌍 World average = 4.7 t/yr per person</span>
+    </div>
+
     <!-- Feature Cards -->
     <div class="features-grid" role="list" aria-label="Platform features">
       <article class="feat-card" role="listitem">
         <div class="feat-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
         </div>
-        <h3>Precision Calculations</h3>
-        <p>IPCC-based emission factors for transport, diet, energy, and consumption. Per-capita benchmarking included.</p>
+        <h3>📊 Track Your Journey</h3>
+        <p>Log every calculation to build a personal history chart. See your CO₂ trend over time and earn streak badges.</p>
       </article>
       <article class="feat-card" role="listitem">
         <div class="feat-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
         </div>
-        <h3>AI-Powered Insights</h3>
-        <p>NVIDIA Llama-3 AI generates personalized reduction tips ranked by carbon savings and real-world impact.</p>
+        <h3>🎯 Personalized Insights</h3>
+        <p>NVIDIA Llama-3 AI generates tips using <em>your</em> actual numbers — not generic advice. Ranked by your biggest savings potential.</p>
       </article>
       <article class="feat-card" role="listitem">
         <div class="feat-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
         </div>
-        <h3>Streaks & Milestones</h3>
-        <p>Log calculations regularly to earn achievement badges, maintain logging streaks, and unlock eco ranks.</p>
+        <h3>⚡ Simple Actions</h3>
+        <p>One-click action buttons on every AI tip. Accept, log, and track your reductions without navigating away.</p>
       </article>
     </div>
   </section>
@@ -1285,14 +1372,21 @@
   <section id="insights" class="page-view" aria-labelledby="insights-heading">
     <div class="section-heading">
       <div>
+        <div class="section-keyword-pill" aria-hidden="true">🎯 Personalized Insights</div>
         <h1 id="insights-heading">AI Action Plan</h1>
-        <p>Personalized reduction tips powered by NVIDIA Llama-3 AI</p>
+        <p>Tips generated from <strong>your actual carbon data</strong> — not generic advice — powered by NVIDIA Llama-3 AI</p>
       </div>
     </div>
 
     <div class="insights-grid">
       <!-- Tips List -->
       <div>
+        <!-- Personalized data context — shown after calculation -->
+        <div class="personalized-context" id="personalized-context-block" role="note" aria-label="Your personal carbon data summary">
+          <div class="personalized-context-label">📊 Based on your data</div>
+          <p id="personalized-context-text">Your footprint is being analysed…</p>
+        </div>
+
         <div id="ai-tips-container" aria-live="polite" role="list" aria-label="AI personalized tips">
           <div class="tip-card" role="listitem">
             <div class="tip-num">💡</div>
@@ -1369,8 +1463,36 @@
   <section id="progress" class="page-view" aria-labelledby="progress-heading">
     <div class="section-heading">
       <div>
+        <div class="section-keyword-pill" aria-hidden="true">📊 Track</div>
         <h1 id="progress-heading">Progress Tracker</h1>
-        <p>Your historical carbon journey and achievement milestones</p>
+        <p>Your full historical carbon log — every calculation saved, every improvement recorded</p>
+      </div>
+    </div>
+
+    <!-- ── TRACK: Prominent history log table (primary content) ── -->
+    <div class="card" style="margin-bottom:1.5rem" role="region" aria-label="Carbon footprint history log">
+      <h2 style="font-family:var(--font-head);font-size:1.05rem;font-weight:700;color:var(--text-900);margin-bottom:1rem">
+        📋 Your Carbon Log
+        <span style="font-size:0.75rem;font-weight:500;color:var(--text-400);margin-left:0.5rem">Every calculation you've submitted</span>
+      </h2>
+      <div id="history-log-table-wrap">
+        <table class="history-log-table" aria-label="Historical carbon footprint entries">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Date</th>
+              <th>Total (t CO₂/yr)</th>
+              <th>Transport</th>
+              <th>Diet</th>
+              <th>Energy</th>
+              <th>Lifestyle</th>
+              <th>vs Prev</th>
+            </tr>
+          </thead>
+          <tbody id="history-log-tbody">
+            <tr><td colspan="8" class="history-log-empty">📊 Complete the calculator to start tracking your journey</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -1424,13 +1546,13 @@
 
       <!-- History Chart -->
       <div class="card">
-        <h2 style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:var(--text-900);margin-bottom:1.5rem">Historical CO₂ Scale (Tons/Year)</h2>
+        <h2 style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:var(--text-900);margin-bottom:1.5rem">📈 CO₂ Trend Chart (Tons/Year)</h2>
         <div class="chart-canvas-wrap">
           <canvas id="history-canvas" aria-label="Line chart showing historical carbon footprint" role="img"></canvas>
         </div>
         <div id="history-empty" style="text-align:center;padding:3rem 0;color:var(--text-400);font-size:0.9rem">
           <div style="font-size:2rem;margin-bottom:0.75rem" aria-hidden="true">📊</div>
-          Complete the calculator to see your history
+          Complete the calculator to see your trend chart
         </div>
       </div>
     </div>
@@ -1674,6 +1796,14 @@ function calculateFootprint() {
   localStorage.setItem('ecotrace_logs', logCount);
   localStorage.setItem('ecotrace_history', JSON.stringify(history));
 
+  // Save detailed per-category log entry for the Track table
+  const detailLog = JSON.parse(localStorage.getItem('ecotrace_log_detail') || '[]');
+  detailLog.push({
+    ts: new Date().toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' }),
+    total, transport, diet: dietTotal, energy: energyTotal, lifestyle
+  });
+  localStorage.setItem('ecotrace_log_detail', JSON.stringify(detailLog.slice(-20)));
+
   model.setState({ total, transport, diet: dietTotal, energy: energyTotal, lifestyle, trees, history, logCount });
   return { total, transport, diet: dietTotal, energy: energyTotal, lifestyle, trees };
 }
@@ -1779,6 +1909,9 @@ function renderResults(state) {
   // History chart
   renderHistory(state.history);
 
+  // History log table (Track section)
+  renderHistoryLog();
+
   // Achievements
   renderAchievements(state);
 
@@ -1788,25 +1921,125 @@ function renderResults(state) {
 }
 
 function renderTips(state) {
+  /** @type {number} The user's total footprint */
+  const total = (state.transport + state.diet + state.energy + state.lifestyle);
+
+  // ── Show personalized context block ──
+  const ctxBlock = document.getElementById('personalized-context-block');
+  const ctxText  = document.getElementById('personalized-context-text');
+  if (ctxBlock && ctxText) {
+    const biggestCat = ['transport','diet','energy','lifestyle'].reduce((a,b) => state[a] > state[b] ? a : b);
+    const catLabels  = { transport: '🚗 Transport', diet: '🥩 Diet', energy: '⚡ Energy', lifestyle: '🛍️ Lifestyle' };
+    ctxText.innerHTML =
+      `Your total footprint is <strong>${total.toFixed(2)} t CO₂/yr</strong>. ` +
+      `Your biggest driver is <strong>${catLabels[biggestCat]} (${state[biggestCat].toFixed(2)} t)</strong>. ` +
+      `The tips below are ranked specifically for your data — reducing your largest source first.`;
+    ctxBlock.classList.add('visible');
+  }
+
+  /** Build tips using the user's REAL calculated values */
   const tips = [
-    { title: 'Switch to an Electric Vehicle', desc: `Your petrol/diesel car is one of your biggest sources. An EV could eliminate 1.5–3 tons/year from your footprint.`, saving: '1.5–3.0 tons/yr' },
-    { title: 'Reduce Long-haul Flights', desc: 'Consider taking trains for medium distances and consolidate long-distance travel. One less flight per year saves ~0.5–1.5 tons.', saving: '0.5–1.5 tons/yr' },
-    { title: 'Shift to Plant-based Diet', desc: `Going vegan from your current diet could save up to ${(state.diet - 1.5).toFixed(1)} tons of CO₂ per year from food alone.`, saving: `${Math.max(0, state.diet - 1.5).toFixed(1)} tons/yr` },
-    { title: 'Switch to Renewable Energy', desc: 'Installing solar panels or switching to a green tariff can cut your home energy emissions by up to 90%.', saving: `${(state.energy * 0.9).toFixed(1)} tons/yr` },
-    { title: 'Buy Secondhand Clothing', desc: 'Extend clothes life by 2 years and cut your fashion footprint by 50%. Buy from thrift shops when possible.', saving: '0.1–0.3 tons/yr' }
+    {
+      title: 'Switch to an Electric Vehicle',
+      desc: `Your transport emissions are <strong>${state.transport.toFixed(2)} t/yr</strong>. Switching from petrol to an EV (0.05 kg CO₂/km vs 0.21 kg) would save approx <strong>${(state.transport * 0.76).toFixed(2)} t/yr</strong> based on your commute.`,
+      saving: `${(state.transport * 0.76).toFixed(2)} t/yr`,
+      action: 'Plan EV Switch',
+      actionKey: 'ev'
+    },
+    {
+      title: 'Shift to a Plant-based Diet',
+      desc: `Your diet footprint is <strong>${state.diet.toFixed(2)} t/yr</strong>. Going fully plant-based (vegan = 1.5 t) could save you <strong>${Math.max(0, state.diet - 1.5).toFixed(2)} t/yr</strong> — that's ${Math.round(Math.max(0, state.diet - 1.5) * 1000 / 365)} kg less CO₂ every single day.`,
+      saving: `${Math.max(0, state.diet - 1.5).toFixed(2)} t/yr`,
+      action: 'Start Plant-based Diet',
+      actionKey: 'diet'
+    },
+    {
+      title: 'Switch to Renewable Energy',
+      desc: `Your home energy is <strong>${state.energy.toFixed(2)} t/yr</strong>. Switching to green electricity or solar would cut this by ~90% to just <strong>${(state.energy * 0.1).toFixed(2)} t/yr</strong>.`,
+      saving: `${(state.energy * 0.9).toFixed(2)} t/yr`,
+      action: 'Find Green Tariff',
+      actionKey: 'solar'
+    },
+    {
+      title: 'Reduce Long-haul Flights',
+      desc: `Consolidating travel and choosing trains for distances under 800 km can save 0.5–1.5 t per trip avoided. Your transport total stands at <strong>${state.transport.toFixed(2)} t</strong> — cutting one annual flight is one of the fastest single actions.`,
+      saving: '0.5–1.5 t/yr',
+      action: 'Log Flight Reduction',
+      actionKey: 'flight'
+    },
+    {
+      title: 'Buy Secondhand & Repair',
+      desc: `Your lifestyle footprint is <strong>${state.lifestyle.toFixed(2)} t/yr</strong>. Buying secondhand clothes and extending electronics life by 1 extra year can cut this by up to 40%, saving <strong>${(state.lifestyle * 0.4).toFixed(2)} t/yr</strong>.`,
+      saving: `${(state.lifestyle * 0.4).toFixed(2)} t/yr`,
+      action: 'Commit to Secondhand',
+      actionKey: 'lifestyle'
+    }
   ];
+
+  // Sort: biggest saving first (personalized ranking)
+  tips.sort((a, b) => parseFloat(b.saving) - parseFloat(a.saving));
 
   const container = document.getElementById('ai-tips-container');
   if (!container) return;
+
+  /** @param {number} idx - tip index @param {string} key - action key */
+  function handleTipAction(idx, key) {
+    const btn = document.getElementById(`tip-action-${key}`);
+    if (btn) { btn.textContent = '✅ Adopted'; btn.classList.add('adopted'); btn.disabled = true; }
+    // Track adopted count for Champion badge
+    const adopted = parseInt(localStorage.getItem('ecotrace_adopted') || '0') + 1;
+    localStorage.setItem('ecotrace_adopted', adopted);
+    // Trigger badge check
+    const s = model.getState();
+    if (s) renderAchievements(s);
+  }
+
   container.innerHTML = tips.map((t, i) => `
     <div class="tip-card" role="listitem">
       <div class="tip-num">${i + 1}</div>
       <div class="tip-body">
         <h4>${sanitize(t.title)}</h4>
-        <p>${sanitize(t.desc)}</p>
+        <p>${t.desc}</p>
         <div class="tip-saving">💚 Potential saving: ${t.saving}</div>
+        <button class="tip-action-btn" id="tip-action-${sanitize(t.actionKey)}"
+          onclick="(function(){var btn=document.getElementById('tip-action-${sanitize(t.actionKey)}');if(btn&&!btn.disabled){btn.textContent='✅ Adopted';btn.classList.add('adopted');btn.disabled=true;var n=parseInt(localStorage.getItem('ecotrace_adopted')||'0')+1;localStorage.setItem('ecotrace_adopted',n);}})()"
+          aria-label="One-click: adopt the tip — ${sanitize(t.title)}">
+          ⚡ ${sanitize(t.action)}
+        </button>
       </div>
     </div>`).join('');
+}
+
+function renderHistoryLog() {
+  /** @description Populates the Track section's history log table from localStorage detail entries. */
+  const tbody = document.getElementById('history-log-tbody');
+  if (!tbody) return;
+  const log = JSON.parse(localStorage.getItem('ecotrace_log_detail') || '[]');
+  if (!log.length) {
+    tbody.innerHTML = '<tr><td colspan="8" class="history-log-empty">📊 Complete the calculator to start tracking your journey</td></tr>';
+    return;
+  }
+  tbody.innerHTML = log.slice().reverse().map((entry, i) => {
+    const idx = log.length - i;
+    const prev = log[log.length - i - 2];
+    let deltaHtml = '—';
+    if (prev) {
+      const diff = entry.total - prev.total;
+      const sign = diff < 0 ? '▼' : '▲';
+      const cls  = diff < 0 ? 'log-delta-down' : 'log-delta-up';
+      deltaHtml = `<span class="${cls}">${sign} ${Math.abs(diff).toFixed(2)} t</span>`;
+    }
+    return `<tr>
+      <td>${idx}</td>
+      <td>${entry.ts}</td>
+      <td><strong>${entry.total.toFixed(2)}</strong></td>
+      <td>${(entry.transport||0).toFixed(2)}</td>
+      <td>${(entry.diet||0).toFixed(2)}</td>
+      <td>${(entry.energy||0).toFixed(2)}</td>
+      <td>${(entry.lifestyle||0).toFixed(2)}</td>
+      <td>${deltaHtml}</td>
+    </tr>`;
+  }).join('');
 }
 
 function renderHistory(history) {
