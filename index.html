@@ -2298,10 +2298,11 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('%c🌿 EcotraceX v3.0 loaded — NVIDIA Llama-3 AI ready', 'color: #22c55e; font-weight: bold; font-size: 12px;');
 });
 </script>
-  /* =============================================
+  <!-- =============================================
        MODULE: Real Automated Test Suite
        @description Validates core logic with 100+ assertions.
-  ============================================= */
+  ============================================= -->
+  <script>
   function runTest(name, actual, expected) {
     // Check strict equality for strings/booleans, or close-enough for floats
     const passed = typeof actual === 'number' && typeof expected === 'number' 
@@ -2365,5 +2366,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   
   window.addEventListener('load', () => setTimeout(window.executeCalculatorTests, 500));
+  </script>
 </body>
 </html>
