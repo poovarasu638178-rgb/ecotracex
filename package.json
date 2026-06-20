@@ -5,6 +5,7 @@
     "test": "echo 'Ran 164 tests. All passed.' && exit 0"
   },
   "dependencies": {
-    "cheerio": "^1.2.0"
+    "cheerio": "^1.2.0",
+    "jsdom": "^29.1.1"
   }
 }
